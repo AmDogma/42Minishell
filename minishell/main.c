@@ -2,52 +2,6 @@
 
 // do    "", '', \, $, ;, |, <>, <<>>,
 
-char	*quote(char *str, int *i)
-{
-	str = del_one(str, i);
-	while (str[*i] && str[*i] != '\'')
-		(*i)++;
-	str = del_one(str, i);
-	return(str);
-}
-
-char	*d_quote(char *str, int *i)
-{
-	str = del_one(str, i);
-	while (str[*i] && str[*i] != '\"')
-		(*i)++;
-	str = del_one(str, i);
-	return(str);
-}
-
-char	*del_one(char *str, int *i)
-{
-	str[*i] = '\0';
-	str = join_free(str, str + *i + 1, &str);
-	return (str);
-}
-
-void exit_stat(void)
-{
-	//разобраться с записью статуса последней исполненной программы
-}
-
-char	*dollar(char *str, int *i)
-{
-	int beg;
-
-	beg = *i + 1;
-	if (str[beg] == '?')
-		exit_stat(); // продумать
-	while (ft_isalnum(str[*i]) || str[*i] == '_')
-		(*i)++;
-	if (beg == *i + 1)
-		return (del_one(str, i));
-
-
-	return (str);
-}
-
 void	pars(char *str, char **env)
 {
 	int i;
@@ -58,11 +12,11 @@ void	pars(char *str, char **env)
 		if (str[i] == '\'')
 			str = quote(str, &i);
 		else if (str[i] == '\\')
-			str = del_one(str, &i);
+			str = del_one_char(str, i);
 		else if (str[i] == '\"')
 			str = d_quote(str, &i);
 		else if (str[i] == '$')
-			str = dollar(str, &i);
+			str = dollar(str, env, &i);
 		
 	}
 	printf("res = %s\n", str); // для проверки правильности
@@ -70,7 +24,12 @@ void	pars(char *str, char **env)
 
 int main(int argc, char **argv, char **env)
 {
-	char *comm = strdup("\"d_quote\"!\'quote\'!\\\\!$");
+	char *comm = strdup("\"d_quote\"!\'quote\'!\\\\!$PATH $"); // сразу маллочим
 	pars(comm, env);
+
+//	int i = -1;
+//	char **path = path_pars(env, "PATH=");
+//	while (path[++i])
+//		printf("%s\n", path[i]);
 	return 0;
 }

@@ -25,3 +25,10 @@ char	*join_free(char const *str1, char const *str2, char **tofree)
 	}
 	return (dest);
 }
+
+char	*del_one_char(char *str, int i)
+{
+	str[i] = '\0';
+	str = join_free(str, str + i + 1, &str);
+	return (str);
+}

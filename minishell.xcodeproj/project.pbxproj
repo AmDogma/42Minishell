@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24094F8126A1F6BA0041500C /* key_path_find.c in Sources */ = {isa = PBXBuildFile; fileRef = 24094F8026A1F6BA0041500C /* key_path_find.c */; };
+		24094F8326A1F7BA0041500C /* doll_quotes.c in Sources */ = {isa = PBXBuildFile; fileRef = 24094F8226A1F7BA0041500C /* doll_quotes.c */; };
+		24094F8726A214170041500C /* libft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24094F8626A214170041500C /* libft.a */; };
 		2433AC5A26A09BE7000081F7 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 2433AC5926A09BE7000081F7 /* main.c */; };
 		2433AC6226A09F57000081F7 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 2433AC6126A09F57000081F7 /* utils.c */; };
-		2433AC6426A0A10E000081F7 /* libft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2433AC6326A0A10E000081F7 /* libft.a */; };
 		2433AC6626A0A183000081F7 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2433AC6526A0A183000081F7 /* Makefile */; };
 /* End PBXBuildFile section */
 
@@ -26,11 +28,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		24094F8026A1F6BA0041500C /* key_path_find.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = key_path_find.c; sourceTree = "<group>"; };
+		24094F8226A1F7BA0041500C /* doll_quotes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = doll_quotes.c; sourceTree = "<group>"; };
+		24094F8626A214170041500C /* libft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libft.a; sourceTree = "<group>"; };
 		2433AC5626A09BE7000081F7 /* minishell */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = minishell; sourceTree = BUILT_PRODUCTS_DIR; };
 		2433AC5926A09BE7000081F7 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		2433AC6026A09F57000081F7 /* minishell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = minishell.h; sourceTree = "<group>"; };
 		2433AC6126A09F57000081F7 /* utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = utils.c; sourceTree = "<group>"; };
-		2433AC6326A0A10E000081F7 /* libft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libft.a; sourceTree = "<group>"; };
 		2433AC6526A0A183000081F7 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2433AC6426A0A10E000081F7 /* libft.a in Frameworks */,
+				24094F8726A214170041500C /* libft.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,8 +70,10 @@
 			isa = PBXGroup;
 			children = (
 				2433AC5926A09BE7000081F7 /* main.c */,
+				24094F8226A1F7BA0041500C /* doll_quotes.c */,
+				24094F8026A1F6BA0041500C /* key_path_find.c */,
+				24094F8626A214170041500C /* libft.a */,
 				2433AC6026A09F57000081F7 /* minishell.h */,
-				2433AC6326A0A10E000081F7 /* libft.a */,
 				2433AC6526A0A183000081F7 /* Makefile */,
 				2433AC6126A09F57000081F7 /* utils.c */,
 			);
@@ -131,6 +137,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24094F8126A1F6BA0041500C /* key_path_find.c in Sources */,
+				24094F8326A1F7BA0041500C /* doll_quotes.c in Sources */,
 				2433AC6626A0A183000081F7 /* Makefile in Sources */,
 				2433AC5A26A09BE7000081F7 /* main.c in Sources */,
 				2433AC6226A09F57000081F7 /* utils.c in Sources */,
