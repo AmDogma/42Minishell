@@ -32,3 +32,4 @@ char	*del_one_char(char *str, int i)
 	str = join_free(str, str + i + 1, &str);
 	return (str);
 }
+

@@ -1,25 +1,33 @@
-NAME = minishell
-CC = gcc
-
-CFLAGS = -Wall -Werror -Wextra
-
-SRCS =	main.c utils.c
-
-OBJS = $(SRCS:.c=.o)
-
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -fsanitize=address -lreadline -L /Users/$(USER)/.brew/opt/readline/lib -I/Users/$(USER)/.brew/opt/readline/include
-
-$(OBJS): %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I .
+NAME	= minishell
+SRC		= $(wildcard src/*.c)
+HDR		= $(wildcard src/*.h)
+OBJ		= $(patsubst src/%.c, obj/%.o,$(SRC))
+LIB		= libft/libft.a
+LIBHDR	= libft/libft.h
+CFLAGS	= -g
+CC		= gcc
+RDLN	= -lreadline -L /Users/$(USER)/.brew/opt/readline/lib -I/Users/$(USER)/.brew/opt/readline/include
 
 all: $(NAME)
 
+$(NAME): $(OBJ) $(LIB)
+	$(CC) $(CFLAGS) $(OBJ) $(LIB) $(RDLN) -o $(NAME)
+
+obj/%.o: src/%.c $(HDR) $(LIB)
+	mkdir -p obj
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(LIB):
+	$(MAKE) -C libft
+
 clean:
-	rm -rf $(OBJS)
+	$(RM) $(OBJ)
+	rmdir obj
+	$(MAKE) clean -C libft
 
 fclean: clean
-	rm -rf $(NAME)
+	$(RM) $(NAME)
+	$(MAKE) fclean -C libft
 
 re: fclean all
 

@@ -8,11 +8,35 @@
 # include "/Users/mdewayne/Desktop/pool/libc/libft/libft/libft.h" // need to change
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <fcntl.h>
 
-/* key_path_find.c */
+typedef struct s_command
+{
+	int input;
+	int output;
+	int error;
+	char **argv;// NULL terminated
+	int argc;// not nesessary
+
+}t_command;
+
+typedef struct s_commandtable
+{
+	char		*str;
+	char		**env;
+	int			p_str;
+	int			fd_in;
+	int			fd_out;
+//	char *errfile;
+	t_command	*cmd;
+	int			comm_num;
+
+} t_commandtable;
+
+/* key_env.c */
 char	**join_char(char **join, char *add);
 char	*key_find(char **env, char *key); // не нужно чистить
-char	**path_pars(char **env);
+char	**env_mall(char **env);
 
 /* utils.c */
 char	*del_one_char(char *str, int i);
@@ -20,7 +44,19 @@ char	*join_free(char const *str1, char const *str2, char **tofree); // можн�
 
 /* doll_quotes.c */
 char	*quote(char *str, int *i);
-char	*d_quote(char *str, int *i);
-char	*dollar(char *str, char **env, int *i);
+char	*d_quote(char *str, t_commandtable	*main, int *i);
+char	*dollar(char *str, t_commandtable	*main, int *i);
 
 #endif
+
+/*
+
+нужно назначить необходимое кол-во структур и создать char **argv в каждой.
+сделать препарсер
+Редиректы
+
+делим команды через пробелы и спецсимволы - какие спецсимволы?
+коммандам достаточны массивы или обязательно в список отдельный?
+$?
+
+*/

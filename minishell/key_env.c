@@ -19,24 +19,37 @@ char	**join_char(char **join, char *add)
 
 char	*key_find(char **env, char *key)
 {
+	char *temp;
 
 	while (*env && ft_strncmp(*env, key, ft_strlen(key)))
 		env++;
 	if (!*env)
 		return (NULL); // не найден путь
-	*env += ft_strlen(key);
-	return (*env);
+	temp = key;
+	key = ft_strdup(ft_strlen(key) + *env);
+	free (temp);
+	return (key);
 }
 
-char	**path_pars(char **env)
+char	**env_mall(char **env)
 {
-	char	**temp;
+	int		i;
+	char	**res;
 
-
-	temp = ft_split(key_find(env, "PATH="), ':');
-	if (!temp)
-		printf("Error: split malloc PATH."); // ошибка выход
-
-	temp = join_char(temp, "/");
-	return (temp);
+	i = 0;
+	while (env + i && env[i])
+		i++;
+	res = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!res)
+		printf("Error: malloc"); // ошибка выход
+	res[i] = NULL;
+	i = 0;
+	while (env[i])
+	{
+		res[i] = strdup(env[i]);
+		if (!res[i])
+			printf("Error: malloc"); // ошибка выход
+		i++;
+	}
+	return (res);
 }
