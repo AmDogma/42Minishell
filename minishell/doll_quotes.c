@@ -16,9 +16,10 @@ char	*d_quote(char *str, t_commandtable	*main, int *i)
 	{
 		if (str[*i] == '$')
 			str = dollar(str, main, i);
-		if (str[*i] == '\\')
+		else if (str[*i] == '\\')
 			str = del_one_char(str, *i);
-		(*i)++;
+		else
+			(*i)++;
 	}
 	str = del_one_char(str, *i);
 	return(str);

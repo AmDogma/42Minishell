@@ -9,27 +9,29 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <fcntl.h>
+# include <limits.h>
 
 typedef struct s_command
 {
-	int input;
-	int output;
-	int error;
-	char **argv;// NULL terminated
-	int argc;// not nesessary
-
+	int		input;
+	int		output;
+	int		error;
+	char	**argv;
+	int		argc;
+	int		curr_arg;
 }t_command;
 
 typedef struct s_commandtable
 {
-	char		*str;
+	char		*str;  // ?
 	char		**env;
-	int			p_str;
+	int			p_str; // ?
 	int			fd_in;
 	int			fd_out;
 //	char *errfile;
 	t_command	*cmd;
 	int			comm_num;
+	int			curr_cmd;
 
 } t_commandtable;
 
