@@ -17,9 +17,11 @@ typedef struct s_command
 	int		output;
 	int		error;
 	char	**argv;
+	char	**rdr_v;
+	char	**rdr_t;
 	int		argc;
 	int		curr_arg;
-}t_command;
+} t_command;
 
 typedef struct s_commandtable
 {
@@ -53,12 +55,13 @@ char	*dollar(char *str, t_commandtable	*main, int *i);
 
 /*
 
-нужно назначить необходимое кол-во структур и создать char **argv в каждой.
-сделать препарсер
 Редиректы
+here doc
 
+$? $вне ковычек
 делим команды через пробелы и спецсимволы - какие спецсимволы?
-коммандам достаточны массивы или обязательно в список отдельный?
-$?
 
+
+Have a working History.
+Not interpret unclosed quotes or unspecified special characters like \
 */
