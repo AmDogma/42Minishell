@@ -13,23 +13,16 @@
 
 typedef struct s_command
 {
-	int		input;
-	int		output;
-	int		error;
+
 	char	**argv;
+	int		curr_arg;
 	char	**rdr_v;
 	char	**rdr_t;
-	int		argc;
-	int		curr_arg;
 } t_command;
 
 typedef struct s_commandtable
 {
-	char		*str;  // ?
 	char		**env;
-	int			p_str; // ?
-	int			fd_in;
-	int			fd_out;
 //	char *errfile;
 	t_command	*cmd;
 	int			comm_num;
@@ -51,6 +44,16 @@ char	*quote(char *str, int *i);
 char	*d_quote(char *str, t_commandtable	*main, int *i);
 char	*dollar(char *str, t_commandtable	*main, int *i);
 
+/* parser */
+void	pars(char *str, t_commandtable	*main);
+char	*redir(char *str, t_commandtable *main, int *i);
+char	*some_space(char *str, t_commandtable *main, int *i);
+int		prepars(char **str, t_commandtable	*main);
+
+/* tabs */
+void	tab_cmd(t_command *cmd, char *str);
+void	tab_main(t_commandtable	*main);
+
 #endif
 
 /*
@@ -58,10 +61,14 @@ char	*dollar(char *str, t_commandtable	*main, int *i);
 Редиректы
 here doc
 
+Have a working History?
+
 $? $вне ковычек
+
+
+
+
 делим команды через пробелы и спецсимволы - какие спецсимволы?
-
-
-Have a working History.
-Not interpret unclosed quotes or unspecified special characters like \
 */
+
+
